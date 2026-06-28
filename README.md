@@ -2,6 +2,8 @@
 
 Application web (PWA) de création de **grilles d'évaluation** et de **notation par compétences**, destinée aux enseignants. Tout fonctionne **côté client**, sans serveur : les données sont stockées dans le `localStorage` du navigateur et peuvent être exportées / importées en JSON.
 
+**🔗 Application en ligne : https://tapaoraa.github.io/Rubriques/** (installable en PWA sur mobile et ordinateur).
+
 ## Fonctionnalités
 
 - **Grilles** : catégories d'items évaluables, réutilisables comme modèles.
@@ -28,6 +30,25 @@ npm run build    # build de production -> dist/
 npm run preview  # prévisualise le build
 npm test         # tests unitaires (logique de scoring)
 ```
+
+## Déploiement (GitHub Pages)
+
+L'app est déployée automatiquement sur **GitHub Pages** via GitHub Actions
+([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) : chaque `push`
+sur `main` reconstruit et publie le site sous ~1 min.
+
+```bash
+git add -A && git commit -m "..." && git push   # déclenche le déploiement
+```
+
+Points clés de la configuration Pages :
+
+- `vite.config.js` → `base: '/Rubriques/'` (doit correspondre au nom du dépôt) ;
+- `src/router/index.js` → `createWebHistory(import.meta.env.BASE_URL)` ;
+- `index.html` référence les fichiers de `public/` via `%BASE_URL%` ;
+- `public/manifest.json` utilise des chemins relatifs (`start_url`/`scope`/icônes) ;
+- `public/sw.js` : service worker (installabilité PWA + cache hors-ligne), enregistré dans `src/main.js` ;
+- le build copie `index.html` en `dist/404.html` pour que le rechargement des routes SPA fonctionne.
 
 ## Architecture
 
