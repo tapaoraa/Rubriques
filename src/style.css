@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Reset / base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { width: 0; height: 0; display: none; }
+html, body { margin: 0; padding: 0; overscroll-behavior: none; -webkit-text-size-adjust: 100%; height: 100%; }
+h1, h2, h3, p { margin: 0; }
+button { font-family: inherit; cursor: pointer; }
+#app { height: 100dvh; display: flex; flex-direction: column; }
+
+/* ============================================================
+   Classes globales réutilisées par plusieurs composants.
+   Les styles propres à un seul composant vivent dans son .vue.
+   ============================================================ */
+@layer components {
+
+  /* --- Shell d'application (topbar partagée Eval/Edit) --- */
+  .topbar {
+    @apply flex items-center justify-between gap-2 min-h-[60px] px-3 bg-primary text-white z-30 flex-none shadow-md;
+    padding-top: calc(0.5rem + env(safe-area-inset-top));
+    padding-bottom: 0.5rem;
+  }
+  .topbar-group { @apply flex items-center gap-1 flex-1 basis-0; }
+  .topbar-group:last-child { @apply justify-end; }
+  .topbar-title { @apply text-center text-[15px] font-bold uppercase tracking-widest text-white/90 truncate flex-none; }
+
+  /* --- Layout de page (Home / Eval / Edit) --- */
+  .page-wrap { @apply flex-1 flex flex-col overflow-hidden bg-surface-sunken; }
+  .page-center { @apply flex-1 flex flex-col overflow-hidden w-full mx-auto; max-width: 1024px; }
+
+  /* --- Boutons icône --- */
+  .icon-btn { @apply inline-flex items-center justify-center w-11 h-11 rounded-xl border-0 bg-transparent text-inherit transition-colors; }
+  .icon-btn:hover { background: rgba(255,255,255,0.12); }
+  .icon-btn:active { background: rgba(255,255,255,0.22); }
+  .icon-btn:disabled { @apply opacity-40 pointer-events-none; }
+  .icon-btn-dark { @apply text-ink-muted; }
+  .icon-btn-dark:hover { @apply bg-surface-raised text-ink; }
+
+  /* --- Boutons texte --- */
+  .btn { @apply inline-flex items-center justify-center gap-2 border border-transparent rounded-xl px-4 py-2.5 text-[15px] font-semibold transition-colors; }
+  .btn-primary { @apply bg-primary text-white hover:bg-primary-dark; }
+  .btn-outline { @apply bg-surface border-border-strong text-ink-muted hover:border-ink-faint; }
+  .btn-ghost { @apply bg-transparent text-ink-muted hover:bg-surface-raised; }
+  .btn-danger { @apply bg-danger text-white; }
+  .btn-sm { @apply px-3 py-1.5 text-sm rounded-md; }
+  .btn-lg { @apply px-4 py-3.5 text-base; }
+  .btn-block { @apply w-full; }
+  .btn:disabled { @apply opacity-50 pointer-events-none; }
+
+  /* --- Boutons outil (carte item Home / ligne édition) --- */
+  .tool-btn { @apply inline-flex items-center justify-center w-[38px] h-[38px] border border-border rounded-[10px] bg-surface text-ink-faint transition-colors; }
+  .tool-btn:hover { @apply bg-surface-raised text-ink; }
+  .tool-del:hover { @apply text-danger bg-danger-soft border-red-200; }
+  .tool-edit:hover { @apply text-primary bg-primary-soft border-indigo-200; }
+  .tool-ok { @apply text-ok border-green-200; }
+  .tool-ok:hover { @apply bg-ok/10 text-ok border-green-300; }
+
+  /* --- Champs de formulaire --- */
+  .input { @apply w-full rounded-md border border-border bg-surface px-3 py-2.5 text-[15px] text-ink outline-none transition-colors; }
+  .input:focus { @apply border-primary ring-2 ring-primary/20; }
+  textarea.input { @apply resize-none; }
+  .field-label { @apply block text-sm font-semibold text-ink-muted mb-1; }
+
+  /* --- Ligne « ajouter » (édition grille + configs modalités) --- */
+  .add-row { @apply flex items-center gap-2 px-3 py-2.5 text-sm text-ink-faint cursor-pointer bg-surface hover:bg-surface-raised hover:text-primary transition-colors; }
+
+  /* --- Flèche de déplacement (en-têtes catégorie + outils item) --- */
+  .arrow-btn { @apply inline-flex items-center justify-center w-[34px] h-[34px] rounded-[9px] border border-border bg-surface text-ink-muted text-[15px] cursor-pointer; }
+  .arrow-btn.disabled { @apply opacity-30 pointer-events-none; }
+}
