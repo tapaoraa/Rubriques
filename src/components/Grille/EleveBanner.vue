@@ -98,7 +98,7 @@ watch(() => props.selectedIdx, () => { showConseils.value = false })
 </script>
 
 <style>
-.banner-wrap { flex: none; }
+.banner-wrap { flex: none; padding: 0 1rem; }
 
 .eleve-banner {
   flex: none;

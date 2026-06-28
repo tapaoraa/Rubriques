@@ -1,24 +1,26 @@
 <template>
-  <div class="edit-banner">
-    <div class="edit-banner-info">
-      <textarea
-        ref="nameInput"
-        class="edit-banner-input"
-        :value="grille.name"
-        rows="1"
-        @input="onInput"
-        @blur="saveName"
-        @keydown.enter.prevent="saveName"
-        @keydown.esc="$event.target.blur()"
-      />
-      <span class="edit-banner-meta">
-        {{ catCount }} catégories · {{ itemCount }} items · {{ maxPts }} pts
-      </span>
-    </div>
+  <div class="banner-wrap">
+    <div class="edit-banner">
+      <div class="edit-banner-info">
+        <textarea
+          ref="nameInput"
+          class="edit-banner-input"
+          :value="grille.name"
+          rows="1"
+          @input="onInput"
+          @blur="saveName"
+          @keydown.enter.prevent="saveName"
+          @keydown.esc="$event.target.blur()"
+        />
+        <span class="edit-banner-meta">
+          {{ catCount }} catégories · {{ itemCount }} items · {{ maxPts }} pts
+        </span>
+      </div>
 
-    <button class="edit-banner-print" title="Imprimer" @click="$emit('print')">
-      <AppIcon name="printer" :size="22" />
-    </button>
+      <button class="edit-banner-print" title="Imprimer" @click="$emit('print')">
+        <AppIcon name="printer" :size="22" />
+      </button>
+    </div>
   </div>
 </template>
 

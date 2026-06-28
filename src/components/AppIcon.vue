@@ -11,7 +11,7 @@
     stroke-linejoin="round"
     aria-hidden="true"
   >
-    <use :href="`/app-icons.svg#${name}`" />
+    <use :href="`${base}app-icons.svg#${name}`" />
   </svg>
 </template>
 
@@ -20,4 +20,6 @@ defineProps({
   name: { type: String, required: true },
   size: { type: Number, default: 20 },
 })
+
+const base = import.meta.env.BASE_URL
 </script>
