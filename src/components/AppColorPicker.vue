@@ -3,7 +3,7 @@
     <button
       type="button"
       class="app-color-trigger"
-      :style="{ background: tint(modelValue, 500) }"
+      :style="swatchStyle(modelValue)"
       :title="currentLabel"
       @click="open = !open"
     />
@@ -14,7 +14,7 @@
         type="button"
         class="app-color-swatch"
         :class="{ on: c.key === modelValue }"
-        :style="{ background: tint(c.key, 500), color: tint(c.key, 600) }"
+        :style="swatchStyle(c.key)"
         :title="c.label"
         @click="select(c.key)"
       />
@@ -24,15 +24,29 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { COLORS, tint, DEFAULT_COLOR } from '../utils/palette.js'
+import { COLORS, tint, shade, DEFAULT_COLOR } from '../utils/palette.js'
 
-const props = defineProps({ modelValue: { type: String, default: DEFAULT_COLOR } })
+const props = defineProps({
+  modelValue: { type: String, default: DEFAULT_COLOR },
+  // Contexte d'usage : aligne la pastille sur le rendu réel de l'objet.
+  //  'category' → teinte foncée · 'column' → case sélectionnée · 'level' → teinte level
+  usage: { type: String, default: '' },
+})
 const emit = defineEmits(['update:modelValue'])
 
 const open = ref(false)
 const root = ref(null)
 
 const currentLabel = computed(() => COLORS.find(c => c.key === props.modelValue)?.label || '')
+
+// Style d'une pastille reflétant le rendu de l'objet pour lequel on choisit la couleur.
+//  category → teinte foncée · column → fond de la case sélectionnée · level → le dot de couleur
+function swatchStyle(key) {
+  if (props.usage === 'level') return { background: tint(key, 500), color: '#fff' }
+  if (!props.usage) return { background: tint(key, 500), color: tint(key, 600) }
+  const s = shade(key, props.usage, 'active')
+  return { background: s.bg, color: s.text, borderColor: s.border }
+}
 
 function select(key) {
   emit('update:modelValue', key)
@@ -68,7 +82,7 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
   z-index: 20;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+  gap: 8px;
   padding: 8px;
   background: #fff;
   border: 1px solid #e2e8f0;
@@ -77,8 +91,8 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 }
 
 .app-color-swatch {
-  width: 22px;
-  height: 22px;
+  width: 27px;
+  height: 27px;
   border-radius: 50%;
   border: none;
   padding: 0;

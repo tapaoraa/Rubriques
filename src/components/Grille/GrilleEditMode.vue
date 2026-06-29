@@ -7,7 +7,7 @@
   >
     <!-- Bandeau de catégorie (mode édition) -->
     <template #cat-header="{ cat, ci }">
-      <AppColorPicker :model-value="cat.color || 'gris'" @update:model-value="setCatColor(ci, $event)" />
+      <AppColorPicker usage="category" :model-value="cat.color || 'gris'" @update:model-value="setCatColor(ci, $event)" />
       <input
         class="edit-categorie-nom"
         :value="cat.name"

@@ -30,7 +30,7 @@
       <!-- Niveaux du groupe -->
       <div class="lvl-edit-levels">
         <div v-for="(lv, li) in grp.levels" :key="li" class="lvl-edit-level">
-          <AppColorPicker v-model="lv.color" @update:modelValue="emit" />
+          <AppColorPicker usage="level" v-model="lv.color" @update:modelValue="emit" />
           <input
             class="lvl-edit-label"
             v-model="lv.label"

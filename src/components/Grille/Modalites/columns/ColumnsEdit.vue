@@ -5,10 +5,10 @@
 
     <!-- Colonnes -->
     <div v-else class="col-edit-cols">
-      <div v-for="(lv, li) in localLevels" :key="li" class="col-edit-col" :style="{ background: tint(lv.color, 50) }">
+      <div v-for="(lv, li) in localLevels" :key="li" class="col-edit-col" :style="{ background: tint(lv.color, 200) }">
         <!-- Header : couleur + flèches + poubelle -->
         <div class="col-edit-header">
-          <AppColorPicker v-model="lv.color" @update:modelValue="emit" />
+          <AppColorPicker usage="column" v-model="lv.color" @update:modelValue="emit" />
           <div class="col-edit-arrows">
             <AppArrowBtn dir="left"  :size="28" :disabled="li === 0"                        @click="moveLevel(li, -1)" />
             <AppArrowBtn dir="right" :size="28" :disabled="li === localLevels.length - 1"   @click="moveLevel(li,  1)" />
@@ -40,7 +40,7 @@
             :step="localStep"
             min="0"
             :value="lv.max"
-            :style="{ color: tint(lv.color, 700), borderColor: tint(lv.color, 400) }"
+            :style="{ color: tint(lv.color, 700), borderColor: tint(lv.color, 700) }"
             title="Borne max"
             @change="setMax(li, $event.target.value)"
           />

@@ -9,8 +9,8 @@
           <img src="/icons/icon.svg" alt="" class="w-7 h-7 rounded-lg" />
           <h1 class="home-card-title">Rubriques</h1>
         </div>
-        <button class="btn btn-ghost btn-sm" @click="showLibrary = true">
-          <AppIcon name="library" :size="18" /> Bibliothèque
+        <button class="btn btn-ghost btn-sm text-[15px]" @click="showLibrary = true">
+          <AppIcon name="library" :size="20" /> Bibliothèque
         </button>
       </div>
       <div class="home-card-body">
@@ -404,7 +404,7 @@ function importGrille() {
 
 .home-card { @apply flex-1 flex flex-col bg-surface rounded-2xl shadow-card border border-border overflow-hidden; }
 .home-card-head { @apply flex items-center justify-between gap-2 px-5 py-4 border-b border-border flex-none; }
-.home-card-title { @apply text-[20px] font-bold text-ink; letter-spacing: -0.01em; }
+.home-card-title { @apply text-[24px] font-bold text-ink; letter-spacing: -0.01em; }
 .home-card-body { @apply flex-1 flex flex-col overflow-hidden; padding: 16px 20px 0; gap: 12px; }
 .home-eval-list { @apply flex-1 overflow-y-auto; padding: 0 0 20px; }
 
