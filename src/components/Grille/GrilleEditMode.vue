@@ -170,8 +170,6 @@ function moveItem(ci, ii, dir) {
 </script>
 
 <style>
-/* ════════ Éditeur de grille — habillage propre au mode édition ════════ */
-.grille-edit { padding-bottom: 80px; }
 
 /* Cellules pleine hauteur, alignées en haut : le contenu (ItemEdit/PreEdit,
    éditeur de modalité) gère son propre padding. */
