@@ -72,9 +72,9 @@ function setRejected(i) {
   flex-shrink: 0;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.75rem;
   border-radius: 9999px;
-  font-size: 0.8rem;
+  font-size: 13px;
   font-weight: 500;
   border: 1px solid var(--color-border, #e2e8f0);
   background: var(--color-surface, #fff);

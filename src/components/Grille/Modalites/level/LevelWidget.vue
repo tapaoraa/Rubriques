@@ -120,7 +120,7 @@ function dotOpacity(gi, li) {
   padding: 8px 12px;
 }
 .level-detail-title {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -134,7 +134,7 @@ function dotOpacity(gi, li) {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.6;
   white-space: nowrap;
 }

@@ -134,8 +134,8 @@ function chooseScore(li, v) {
 .col-pt-box {
   font-size: 14px;
   font-weight: 500;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;

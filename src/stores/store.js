@@ -150,7 +150,9 @@ export function isGrilleEmpty(scores, gradeData) {
     if (!s) return false
     if (it.modality === 'check')   return (s.states || []).some(x => x === 'active' || x === 'rejected')
     if (it.modality === 'level')   return (s.groupStates || []).some(x => (x ?? 0) > 0)
-    if (it.modality === 'columns') return s.colIdx >= 0 || s.ptBoxChosen === true
+    // Colonne : tant que les points ne sont pas saisis (ptBoxChosen), on
+    // considère la case comme vide → on garde le trait au lieu d'afficher « 0 ».
+    if (it.modality === 'columns') return s.ptBoxChosen === true
     return false
   })
 }

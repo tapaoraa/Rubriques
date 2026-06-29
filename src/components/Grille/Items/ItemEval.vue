@@ -35,7 +35,7 @@ const touched = computed(() => {
 }
 .eval-item-nom {
   font-weight: 700; text-transform: uppercase;
-  font-size: 13px; color: #1f2937; line-height: 1.25;
+  font-size: 14px; color: #1f2937; line-height: 1.25;
 }
 .eval-item-score { margin: 0; font-size: 22px; font-weight: 600; color: #1f2937; }
 .eval-score-empty { font-weight: 400; font-size: 0.72em; opacity: 0.35; }

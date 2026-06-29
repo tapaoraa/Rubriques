@@ -40,6 +40,6 @@ const max = computed(() => getItemMax(props.item))
 /* Aperçu (item non en cours d'édition) : centré. */
 .edit-preedit-cell { align-items: center; text-align: center; }
 .edit-preedit-head { flex: 1; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-.edit-preedit-nom { margin: 0; font-weight: 700; text-transform: uppercase; font-size: 13px; color: #1f2937; line-height: 1.25; text-align: center; }
+.edit-preedit-nom { margin: 0; font-weight: 700; text-transform: uppercase; font-size: 14px; color: #1f2937; line-height: 1.25; text-align: center; }
 .edit-preedit-pts { margin: 0; font-size: 13px; font-weight: 700; color: #475569; }
 </style>
