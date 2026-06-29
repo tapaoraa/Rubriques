@@ -73,7 +73,7 @@ defineExpose({ rootEl })
 .grille-sections {
   flex: 1; min-height: 0; overflow-y: auto;
   width: 100%;
-  padding: 0 1rem 50px;
+  padding: 0 1rem 20px;
 }
 
 .grille-categorie { margin-top: 10px; }
